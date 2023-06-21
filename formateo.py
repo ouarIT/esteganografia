@@ -13,8 +13,8 @@ def incrustacion(imagen: Image, diferencia: int):
     pixel2_bin = diferencia_bin[6:]
 
     # agregamos los 0 menos significativos
-    pixel1_bin = pixel1_bin + '10'
-    pixel2_bin = pixel2_bin + '10'
+    pixel1_bin = pixel1_bin + '00'
+    pixel2_bin = pixel2_bin + '00'
 
     # cargamos los pixeles de la imagen
     imagen.putpixel((0, 0), int(pixel1_bin, 2))

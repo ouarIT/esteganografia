@@ -24,15 +24,15 @@ def incrustar_imagen(imagen_rgb: Image, imagen_bn: Image):
             # obtenemos los bits de la imagen bn
             pixel_bn_bin = bin(pixel_bn)[2:]
 
-            if x == 0 and y == 0 and len(pixel_bn_bin) < 8:
+            if x == 0 and y == 0:
                 while len(pixel_bn_bin) < 8:
                     pixel_bn_bin = pixel_bn_bin + '0'
 
-            if x == 0 and y == 1 and len(pixel_bn_bin) < 8:
+            elif x == 0 and y == 1 and len(pixel_bn_bin) < 8:
                 while len(pixel_bn_bin) < 8:
                     pixel_bn_bin = pixel_bn_bin + '0'
 
-            if len(pixel_bn_bin) < 8:
+            elif len(pixel_bn_bin) < 8:
                 pixel_bn_bin = llenar_bits(pixel_bn_bin, 8)
 
             primer_par = pixel_bn_bin[:2]
