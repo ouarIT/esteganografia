@@ -1,10 +1,9 @@
 import numpy as np
-from PIL.Image import open as load_pic
+import PIL.Image as Image
 from skimage.metrics import structural_similarity
 
 
 def arnold_cat_map_iterador(imagen, iteraciones):
-    matriz_imagen = np.array(imagen)
     copia_imagen = imagen.copy()
     width, height = copia_imagen.size
 
@@ -23,11 +22,10 @@ def arnold_cat_map_iterador(imagen, iteraciones):
     return copia_imagen
 
 
-def arnold_cat_map(path):
+def arnold_cat_map(imagen: Image):
     # contador de iteraciones
     counter = 0
     # cargamos la imagen
-    imagen = load_pic(path)
     imagen = imagen.convert('L')
 
     # creamos la matriz de la imagen
@@ -76,4 +74,4 @@ def arnold_cat_map(path):
             counter_min = counter
             imagen_menor_correlacion = copia_imagen.copy()
 
-    return counter, counter_min, imagen_menor_correlacion
+    return counter-counter_min, imagen_menor_correlacion
