@@ -17,7 +17,7 @@ def separar_imagen(imagen: Image):
             b = llenar_bits(bin(pixel[2])[2:], 8)
 
             # creamos el nuevo pixel
-            newPixel = r[-2:]+g[-2:]+b[-2:]+'10'
+            newPixel = r[-2:]+g[-2:]+b[-2:]+'00'
 
             lienzo_nuevo.putpixel((x, y), int(newPixel, 2))
 

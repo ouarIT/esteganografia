@@ -1,7 +1,7 @@
 import PIL.Image as Image
 
 
-def incrustacion(imagen: Image, diferencia: int):
+def agregar_info(imagen: Image, diferencia: int):
     # pasamos a bits la diferencia
     diferencia_bin = bin(diferencia)[2:]
 

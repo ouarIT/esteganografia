@@ -65,3 +65,4 @@ def incrustar_imagen(imagen_rgb: Image, imagen_bn: Image):
             imagen_rgb.putpixel((x, y), pixel)
 
     return imagen_rgb
+

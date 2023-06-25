@@ -1,6 +1,7 @@
 import numpy as np
 import PIL.Image as Image
 from skimage.metrics import structural_similarity
+from manejador_bits import llenar_bits
 
 
 def arnold_cat_map_iterador(imagen, iteraciones):
@@ -74,4 +75,27 @@ def arnold_cat_map(imagen: Image):
             counter_min = counter
             imagen_menor_correlacion = copia_imagen.copy()
 
-    return counter-counter_min, imagen_menor_correlacion
+    return counter-counter_min, sustituir_bits(imagen_menor_correlacion)
+
+
+def sustituir_bits(imagen: Image):
+    # esta funcion sirve para quitar los dos bits de cada pixel y colocarlos con 00
+    # se obtienen las dimensiones de la imagen
+    width, height = imagen.size
+
+    for x in range(width):
+        for y in range(height):
+            # obtenemos el pixel
+            pixel = imagen.getpixel((x, y))
+            pixel = bin(pixel)[2:]
+
+            if len(pixel) < 8:
+                pixel = llenar_bits(pixel, 8)
+
+            if pixel[-2:] != '00':
+                pixel = pixel[:-2] + '00'
+
+                # sustituimos el pixel
+                imagen.putpixel((x, y), int(pixel, 2))
+
+    return imagen
