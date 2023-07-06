@@ -25,8 +25,13 @@ def separar_imagen(imagen: Image):
 
 
 def obtener_bits(imagen: Image):
-    pixel1 = imagen.getpixel((0, 0))
-    print('pixel', (bin(pixel1)))
+    pixel1 = bin(imagen.getpixel((0, 0)))[2:]
+    pixel2 = bin(imagen.getpixel((0, 1)))[2:]
 
-    pixel2 = imagen.getpixel((0, 1))
-    print('pixel', (bin(pixel2)))
+    pixel1 = llenar_bits(pixel1, 8)[:-2]
+    pixel2 = llenar_bits(pixel2, 8)[:-2]
+
+    print(pixel1)
+    print(pixel2)
+
+    return int(pixel1 + pixel2, 2)

@@ -4,6 +4,7 @@ import PIL.Image as Image
 def agregar_info(imagen: Image, diferencia: int):
     # pasamos a bits la diferencia
     diferencia_bin = bin(diferencia)[2:]
+    print(diferencia_bin)
 
     # agregamos 0 a la izquierda hasta que sea multiplo de 8 asi se crea el pixel
     while len(diferencia_bin) < 12:
